@@ -7,24 +7,23 @@ public class playerController : MonoBehaviour
     //public float for move speed can be changed in unity editor
     public float moveSpeed = 50.0f;
 
+    //variable to contain the character controller
+    private CharacterController characterController;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //to refrence the character controller component 
+        characterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //create a vector variable that is the player character
-        Vector3 pos = transform.position;
+        // gets player input
+        Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        //moves the character
+        characterController.SimpleMove(moveDirection * moveSpeed);
 
-
-        // makes position x or z go up depending on command. 
-        pos.x += moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime;
-        pos.z += moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
-
-        //set space marine to new position
-        transform.position = pos;
     }
 }
