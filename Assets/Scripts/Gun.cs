@@ -7,8 +7,10 @@ public class Gun : MonoBehaviour
 
     public GameObject bulletPrefab;
     public Transform launchPosition;
+    public bool isUpgraded;
+    public float upgradeTime = 10.0f;
 
-
+    private float currentTime;
     private AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -18,18 +20,44 @@ public class Gun : MonoBehaviour
     }
     void fireBullet()
     {
-        // creates a game object thats a  existing prefab 
+
+        Rigidbody bullet = createBullet();
+        bullet.velocity = transform.parent.forward * 100;
+
+        
+
+        if (isUpgraded)
+        {
+            Rigidbody bullet2 = createBullet();
+            bullet2.velocity =
+            (transform.right + transform.forward / 0.5f) * 100;
+            Rigidbody bullet3 = createBullet();
+            bullet3.velocity =
+            ((transform.right * -1) + transform.forward / 0.5f) * 100;
+        }
+
+        if (isUpgraded)
+        {
+            audioSource.PlayOneShot(soundManager.Instance.upgradedGunFire);
+        }
+        else
+        {
+            audioSource.PlayOneShot(soundManager.Instance.gunFire);
+        }
+    }
+
+    private Rigidbody createBullet()
+    {
         GameObject bullet = Instantiate(bulletPrefab) as GameObject;
-
-
-        // sets the position of the object to where the gun is 
         bullet.transform.position = launchPosition.position;
+        return bullet.GetComponent<Rigidbody>();
+    }
 
 
-        // atatch it to the rigidbody of the marine so it fires in the same direction the marine is facing
-        bullet.GetComponent<Rigidbody>().velocity = transform.parent.forward * 100;
-
-        audioSource.PlayOneShot(soundManager.Instance.gunFire);
+    public void UpgradeGun()
+    {
+        isUpgraded = true;
+        currentTime = 0;
     }
 
 
