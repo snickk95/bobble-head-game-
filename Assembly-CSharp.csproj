@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\playerController.cs" />
     <Compile Include="Assets\Scripts\projectile.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
+    <Compile Include="Assets\soundManager.cs" />
     <Compile Include="Assets\test for git.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>F:/game engines semester 3/bobble head game/bobble head game - nick harrison/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
