@@ -8,10 +8,13 @@ public class Gun : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform launchPosition;
 
+
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
     void fireBullet()
     {
@@ -25,6 +28,8 @@ public class Gun : MonoBehaviour
 
         // atatch it to the rigidbody of the marine so it fires in the same direction the marine is facing
         bullet.GetComponent<Rigidbody>().velocity = transform.parent.forward * 100;
+
+        audioSource.PlayOneShot(soundManager.Instance.gunFire);
     }
 
 
