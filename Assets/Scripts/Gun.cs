@@ -64,6 +64,12 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentTime += Time.deltaTime;
+        if (currentTime> upgradeTime && isUpgraded == true)
+        {
+            isUpgraded = false;
+        }
+
         // check if mouse button pressed to call firing the bullet
         if (Input.GetMouseButtonDown(0))
         {

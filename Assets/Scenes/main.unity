@@ -1407,6 +1407,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 302206298267687670, guid: bad78010b8cafae488943a267693def6,
     type: 3}
   launchPosition: {fileID: 672882469}
+  isUpgraded: 0
+  upgradeTime: 10
 --- !u!95 &1584733069 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: 7e288412380b0a54f8c7e8552fe724ea,
@@ -1634,7 +1636,8 @@ AudioSource:
   m_GameObject: {fileID: 1714661535}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243410825953457198, guid: dc383cd99e651ce46b4809d122da0f46,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c913da143d1341c4a8ca22e0717e79a2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -2076,11 +2079,14 @@ MonoBehaviour:
   - {fileID: 1443357311}
   - {fileID: 188131773}
   alien: {fileID: 5692525566807010369, guid: 1ea4880f02be03e49b82ddf9d2c169d8, type: 3}
-  maxAliensOnScreen: 10
-  totalAliens: 10
+  maxAliensOnScreen: 50
+  totalAliens: 50
   minSpawnTime: 0
   maxSpawnTime: 3
-  aliensPerSpawn: 1
+  aliensPerSpawn: 3
+  upgradePrefab: {fileID: 105092, guid: 941d6224549424c91b1cf112b44ec0cb, type: 3}
+  gun: {fileID: 1584733068}
+  upgradeMaxTimeSpawn: 7.5
 --- !u!4 &1971327999
 Transform:
   m_ObjectHideFlags: 0

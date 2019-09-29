@@ -10,21 +10,13 @@ public class soundManager : MonoBehaviour
 
     //sound variables
     public AudioClip gunFire;
-
     public AudioClip upgradedGunFire;
-
     public AudioClip marineDeath;
-
     public AudioClip hurt;
-
     public AudioClip alienDeath;
-   
     public AudioClip victory;
-
     public AudioClip elevatorArrived;
-
     public AudioClip powerUpPickup;
-
     public AudioClip powerUpAppear;
     // Start is called before the first frame update
     void Start()
