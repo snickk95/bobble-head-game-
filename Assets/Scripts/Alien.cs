@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class Alien : MonoBehaviour
 {
     public Transform target;
     private NavMeshAgent agent;
-
+    public UnityEvent OnDestroy;
     public float navigationUpdate;
     private float navigationTime=0;
 
@@ -35,9 +36,20 @@ public class Alien : MonoBehaviour
             }
         }
     }
+
+    public void Die()
+    {
+        OnDestroy.Invoke();
+
+        OnDestroy.RemoveAllListeners();
+
+        Destroy(gameObject);
+    }
+
+
     void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        Die();
         soundManager.Instance.PlayOneShot(soundManager.Instance.alienDeath);
     }
 }
