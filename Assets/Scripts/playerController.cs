@@ -9,6 +9,7 @@ public class playerController : MonoBehaviour
     public Rigidbody head;
     public LayerMask layerMask;
     private Vector3 currentLookTarget = Vector3.zero;
+    public Animator bodyAnimator;
 
     //variable to contain the character controller
     private CharacterController characterController;
@@ -37,12 +38,14 @@ public class playerController : MonoBehaviour
         //detects if marine is standing still
         if (moveDirection==Vector3.zero)
         {
-
+            bodyAnimator.SetBool("IsMoving", false);
         }
         //makes head move in a direction when movment is happening
         else
         {
             head.AddForce(transform.right * 150, ForceMode.Acceleration);
+
+            bodyAnimator.SetBool("IsMoving", true);
         }
         
         RaycastHit hit;
