@@ -218,6 +218,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   bodyAnimator: {fileID: 1584733069}
+  hitForce:
+  - 0.1
+  - 0.2
+  - 0.3
+  timeBetweenHits: 0
+  marineBody: {fileID: 1584733070}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +466,7 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -531,6 +538,20 @@ Transform:
   m_Father: {fileID: 1716474883}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!114 &534669906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9efe26825c6d3b24aac340ea97076054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDecay: 0.002
+  intensity: 0.3
 --- !u!1 &536952589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,6 +1549,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &1584733072
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584733067}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 2
+  m_Height: 0.24
+  m_Direction: 1
+  m_Center: {x: -1.61, y: 3.5, z: 0}
 --- !u!1001 &1594475985
 PrefabInstance:
   m_ObjectHideFlags: 0
