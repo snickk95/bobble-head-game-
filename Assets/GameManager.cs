@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //public variables
+    public GameObject deathFloor;
     public GameObject player;
     public GameObject[] spawnPoints;
     public GameObject alien;
@@ -122,6 +123,8 @@ public class GameManager : MonoBehaviour
                     newAlien.transform.LookAt(targetRotation);
 
                     alienScript.OnDestroy.AddListener(AlienDestroyed);
+
+                    alienScript.GetDeathParticles().SetDeathFloor(deathFloor);
                 }
             }
         }

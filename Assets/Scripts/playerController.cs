@@ -13,6 +13,7 @@ public class playerController : MonoBehaviour
     public float timeBetweenHits;
     public Rigidbody marineBody;
 
+    private DeathParticles deathParticles;
     private bool isDead = false;
     private bool isHit;
     private float timeSinceHit;
@@ -34,12 +35,14 @@ public class playerController : MonoBehaviour
         head.transform.parent = null;
         head.useGravity = true;
         soundManager.Instance.PlayOneShot(soundManager.Instance.marineDeath);
+        deathParticles.Activate();
         Destroy(gameObject);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        deathParticles = gameObject.GetComponent<DeathParticles>();
         //to refrence the character controller component 
         characterController = GetComponent<CharacterController>();
     }

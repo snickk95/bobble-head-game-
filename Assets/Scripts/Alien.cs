@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class Alien : MonoBehaviour
 {
+    private DeathParticles deathParticles;
     public Transform target;
     private NavMeshAgent agent;
     public UnityEvent OnDestroy;
@@ -53,6 +54,17 @@ public class Alien : MonoBehaviour
         Destroy(gameObject);
     }
 
+
+    public DeathParticles GetDeathParticles()
+    {
+        if (deathParticles == null)
+        {
+            deathParticles = GetComponentInChildren<DeathParticles>();
+        }
+        return deathParticles;
+    }
+
+
     public void die()
     {
         isAlive = false;
@@ -64,7 +76,16 @@ public class Alien : MonoBehaviour
         head.velocity = new Vector3(0, 26.0f, 3.0f);
         OnDestroy.Invoke();
         OnDestroy.RemoveAllListeners();
-        soundManager.Instance.PlayOneShot(soundManager.Instance.alienDeath);
+
+       soundManager.Instance.PlayOneShot(soundManager.Instance.alienDeath);
+
+
+        if (deathParticles)
+        {
+            deathParticles.transform.parent = null;
+            deathParticles.Activate();
+        }
+
         Destroy(gameObject);
     }
 
