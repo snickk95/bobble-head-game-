@@ -22,6 +22,16 @@ public class playerController : MonoBehaviour
     private CharacterController characterController;
 
 
+   
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        deathParticles = gameObject.GetComponent<DeathParticles>();
+        //to refrence the character controller component 
+        characterController = GetComponent<CharacterController>();
+    }
+
     public void die()
     {
         bodyAnimator.SetBool("IsMoving", false);
@@ -38,15 +48,6 @@ public class playerController : MonoBehaviour
         deathParticles.Activate();
         Destroy(gameObject);
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        deathParticles = gameObject.GetComponent<DeathParticles>();
-        //to refrence the character controller component 
-        characterController = GetComponent<CharacterController>();
-    }
-
     // Update is called once per frame
     void Update()
     {
