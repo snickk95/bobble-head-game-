@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject upgradePrefab;
     public Gun gun;
     public float upgradeMaxTimeSpawn;
+    public Animator arenaAnimator;
 
     //private variables
     private int aliensOnScreen = 0;
@@ -138,5 +139,18 @@ public class GameManager : MonoBehaviour
     {
         aliensOnScreen -= 1;
         totalAliens -= 1;
+        if (totalAliens == 0)
+        {
+            Invoke("endGame", 2.0f);
+        }
     }
+
+    private void endGame()
+    {
+        soundManager.Instance.PlayOneShot(soundManager.Instance.
+        elevatorArrived);
+        arenaAnimator.SetTrigger("PlayerWon");
+    }
+   
+
 }
